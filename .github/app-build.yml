@@ -1,0 +1,24 @@
+name: app-build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Init Gradle
+        run: gradle init
+      - name: Init Gradle wrapper (gradlew)
+        run: gradle wrapper
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Execute Gradle build
+        run: ./gradlew build
+      # might be unnecessary:
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build Artifacts
+          path: app/build/outputs/

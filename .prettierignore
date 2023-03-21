@@ -1,0 +1,20 @@
+### .prettierignore v1.0.0 ###
+
+# utils
+.cache
+.git
+.vscode
+node_modules/
+
+# build output
+dist/
+.output/
+
+# common deployment provider files
+.vercel/
+.netlify/
+
+# tests
+coverage
+
+### additional directives ###

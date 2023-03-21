@@ -1,0 +1,16 @@
+node_modules
+dist
+
+# env files to keep out of repo
+.env
+.env.server
+
+# the production server's whatsapp session is saved here
+.wwebjs_auth
+# the development server's whatsapp session is saved here
+.wwebjs_auth_dev
+
+.dummy
+.dccache
+
+coverage/**/*

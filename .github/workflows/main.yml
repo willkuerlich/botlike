@@ -1,0 +1,37 @@
+name: app-run
+# on: workflow_dispatch # alternative mode => if manual handling is desired
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUILD_TARGET: ${{ secrets.BUILD_TARGET }}
+      OAI_API_KEY: ${{ secrets.OAI_API_KEY }}
+      SYSTEM_CHROME_PATH: ${{ secrets.SYSTEM_CHROME_PATH }}
+    strategy:
+      matrix:
+        node-version: [19.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+      - run: npm ci
+      # - run: npm run build # no extra build step before commit necessary => WA package throws
+      # - run: npm run lint
+
+      # extra pre release PR step before updating runtime
+      # TODO
+      # - name: Create Release Pull Request or Publish
+      #   id: changesets
+      #   uses: changesets/action@v1
+      #   with:
+      #     # publish: npm run build
+      #     publish: node dist/index.js
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - run: npm run lint && node dist/index.js # alternative without PR
+      - run: npm run start # alternative without PR

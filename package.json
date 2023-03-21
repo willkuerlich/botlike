@@ -1,0 +1,92 @@
+{
+  "name": "botlike",
+  "version": "0.1.0-alpha.0",
+  "description": "Botlike - Whatsapp + Telegram bot with OpenAI API integration, Automatic1111 API server support and neat developer features. Written in Typescript.",
+  "type-temp": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "license": "MIT",
+  "author": {
+    "name": "willkuerlich"
+  },
+  "engines-temp": {
+    "node": ">= 19.0.0 < 20.0.0",
+    "npm": ">= 8.19.3"
+  },
+  "scripts": {
+    "start-vite": "vite",
+    "build-vite": "vite build",
+    "preview-vite": "vite preview",
+    "--->  TESTS   ---": "---------------------------------------------------------",
+    "coverage": "vitest run --coverage",
+    "test": "vitest",
+    "test:web-client": "vitest --environment jsdom",
+    "--->  UTILS   ---": "---------------------------------------------------------",
+    "cleanup": "rimraf dist",
+    "lint": "tsc",
+    "--->  BUILD   ---": "---------------------------------------------------------",
+    "build:dts": "npm run cleanup && tsup src/index.ts --format cjs,esm --dts",
+    "build": "npm run cleanup && npm run lint && tsup src/index.ts --format cjs,esm",
+    "--->  PUBLISH ---": "---------------------------------------------------------",
+    "pre-publish": "npm run lint && npm run build && git add .",
+    "publish-TODO": "git push",
+    "--->  START   ---": "---------------------------------------------------------",
+    "/* DEFAULT ADAPTER IS WHATSAPP */": "",
+    "start": "set NTBA_FIX_350=1&& node dist -as local",
+    "start:debug": "set NTBA_FIX_350=1&& node dist -as local -d",
+    "start:inspect": "set NODE_OPTIONS=\"--inspect-brk=5500\" && npm run start",
+    "dev": "npm run dev:local",
+    "dev:local": "node dist -c dev-client -as local -s ./.wwebjs_auth -i",
+    "dev:remote": "node dist -c dev-client -as remote -i",
+    "connection-test:local": "node connection-test-local",
+    "connection-test:server": "node connection-test-server"
+  },
+  "keywords": [
+    "willkuerlich",
+    "openai",
+    "puppeteer",
+    "qrcode-terminal",
+    "tsup",
+    "typescript",
+    "whatsapp"
+  ],
+  "dependencies": {
+    "@commander-js/extra-typings": "~10.0.1",
+    "axios": "~1.2.2",
+    "boxen": "~7.0.1",
+    "commander": "~10.0.0",
+    "dotenv": "~16.0.3",
+    "indexeddbshim": "~11.0.0-beta.0",
+    "mongoose": "~6.8.4",
+    "node-telegram-bot-api": "~0.61.0",
+    "openai": "~3.1.0",
+    "puppeteer": "~19.6.0",
+    "qrcode-terminal": "~0.12.0",
+    "remove": "~0.1.5",
+    "sharp": "~0.31.3",
+    "whatsapp-web.js": "~1.19.5",
+    "wwebjs-mongo": "~1.1.0",
+    "xstate": "~4.35.2",
+    "zod": "~3.20.2"
+  },
+  "devDependencies": {
+    "@changesets/cli": "~2.26.0",
+    "@types/node-telegram-bot-api": "~0.61.3",
+    "@vitest/coverage-c8": "~0.29.3",
+    "eslint": "~8.34.0",
+    "rimraf": "~4.1.1",
+    "tsup": "~6.5.0",
+    "typescript": "~4.9.4",
+    "vite": "~4.2.0",
+    "vite-tsconfig-paths": "~4.0.7",
+    "vitest": "~0.29.3"
+  },
+  "homepage": "https://github.com/willkuerlich/botlike",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willkuerlich/botlike.git"
+  },
+  "bugs": {
+    "url": "https://github.com/willkuerlich/botlike/issues"
+  }
+}

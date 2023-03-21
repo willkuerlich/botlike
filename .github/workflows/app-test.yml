@@ -1,0 +1,18 @@
+name: app-test
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUILD_TARGET: ${{ secrets.BUILD_TARGET }}
+      OAI_API_KEY: ${{ secrets.OAI_API_KEY }}
+      SYSTEM_CHROME_PATH: ${{ secrets.SYSTEM_CHROME_PATH }}
+    strategy:
+      matrix:
+        node-version: [19.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+      - run: npm i
+      - run: node connection-test-server

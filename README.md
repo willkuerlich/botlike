@@ -34,6 +34,8 @@ Telegram uses a token which you can set in the .env file.
 - [X] Move WA module + Mongo into own package
 - [X] Setup Base Adapter for Telegram
 - [X] Integrate TG module
+- [ ] Integrate Discord module
+- [X] Add development mode
 - [X] Add test suite (vitest)
 - [ ] Write basic tests
 - [ ] Write docs
@@ -41,7 +43,7 @@ Telegram uses a token which you can set in the .env file.
 
 #### Next planned features
 
-- [ ] HMR dev-server
+- [ ] HMR dev-server (WebUI?)
 - [x] commands/API
 - [x] commands/CLI-like
 - [ ] Setup a designated control server (express based?) with main logic => use supabase

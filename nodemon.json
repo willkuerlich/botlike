@@ -1,8 +1,19 @@
 {
   "restartable": "rs",
-  "ignore": [".git", "node_modules/**/node_modules", "lib/**/*"],
+  "ignore": [
+    ".changeset/**/*",
+    ".dummy/**/*",
+    ".git/**/*",
+    ".github/**/*",
+    "@types/**/*",
+    "coverage/**/*",
+    "dist/**/*",
+    ".wwebjs_auth/**/*",
+    "node_modules/**/node_modules",
+    "lib/**/*"
+  ],
   "execMap": {
-    "ts": "node --trace-warnings --loader ts-node/esm --require ts-node/register --require tsconfig-paths/register"
+    "ts": "node --loader ./hmr-ts-custom-path-resolve-loader.js"
   },
   "ext": "ts,js,json"
 }

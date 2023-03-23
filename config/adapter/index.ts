@@ -7,4 +7,6 @@ export const adapterTypes = ['whatsapp' /* , 'telegram' */] as const;
 
 export type AdapterType = (typeof adapterTypes)[number];
 
-export const registerNetworks: BotNetworkType[] = [/* discord, */ 'telegram', 'whatsapp']; // make type const?
+export const registerNetworks: BotNetworkType[] = [
+  /* discord, */ 'telegram' /* , 'whatsapp' */,
+]; // make type const?

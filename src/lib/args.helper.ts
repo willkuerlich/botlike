@@ -24,13 +24,13 @@ export const processArgsSchema = z.object({
 });
 
 export const processArgsLogger = (args: ProcessArgs) => {
-  console.log(`process.args.debug: ${args.debug}`);
-  console.log(`process.args.introspect: ${args.introspect}`);
-  console.log(`process.args.mode: ${args.mode} `);
-  console.log(`process.args.sessionPath: ${args.sessionPath} `);
-  console.log(`process.args.sessionClientId: ${args.sessionClientId} `);
-  // console.log(`process.args.adapter: ${args.adapter}`);
-  console.log(`process.args.authStrategy: ${args.authStrategy}`);
+  console.log(`process.args.debug: ${args.debug}`); // ADD ADDITIONAL LOG LEVEL ARGS PARAM?
+  console.log(`process.args.introspect: ${args.introspect}`); // KEEP OR REMOVE (HANDLE WITH LOG LEVELS?)
+  console.log(`process.args.mode: ${args.mode} `); // KEEP OR REMOVE
+  console.log(`process.args.sessionPath: ${args.sessionPath} `); // KEEP AND RENAME LOCAL_SESSION_PATH OR REMOVE
+  console.log(`process.args.sessionClientId: ${args.sessionClientId} `); // WHAT FOR?
+  // console.log(`process.args.adapter: ${args.adapter}`); // KEEP => ARRAY OF NETWORK-CLIENT OR REMOVE
+  console.log(`process.args.authStrategy: ${args.authStrategy}`); // ONLY VALID FOR WA => REMOVE OR RENAME?
 };
 
 export const processArgsParser = () =>

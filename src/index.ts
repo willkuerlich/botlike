@@ -21,7 +21,7 @@ import { timelogFormat } from 'src/lib/log.lib';
    *    also absolute imports via "src/..." are enabled by default
    **/
 
-  console.log('Hallo hmr');
+  console.log('hmr-mode');
 
   console.info('.env vars will be loaded if file is present');
   dotenv.config();
@@ -30,9 +30,3 @@ import { timelogFormat } from 'src/lib/log.lib';
 
   await (await import('./app/bootstrap')).default();
 })();
-
-function foo() {
-  console.log('foo');
-}
-
-module.exports = foo();

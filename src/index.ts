@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { timelogFormat } from './lib/log.lib';
+import { timelogFormat } from 'src/lib/log.lib';
 
 // TODO: implement logger service
 

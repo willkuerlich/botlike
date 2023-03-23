@@ -1,4 +1,13 @@
 {
+  "ts-node": {
+    "transpileOnly": true,
+    "transpiler": "ts-node/transpilers/swc-experimental",
+    "esm": true,
+    // "compilerOptions": {
+    //   "module": "CommonJS"
+    // },
+    "require": ["tsconfig-paths/register"]
+  },
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 

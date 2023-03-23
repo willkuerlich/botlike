@@ -1,0 +1,20 @@
+{
+  "__INFO__": "TO SUPPRESS THE 'ExperimentalWarning: Custom ESM Loaders is an experimental feature.' WARNING => EITHER CHANGE MODULE IN TSCONFIG OR TRY UPDATE NODE TO V19 + use --watch",
+  "restartable": "rs",
+  "ignore": [
+    ".changeset/**/*",
+    ".dummy/**/*",
+    ".git/**/*",
+    ".github/**/*",
+    "@types/**/*",
+    "coverage/**/*",
+    "dist/**/*",
+    ".wwebjs_auth/**/*",
+    "node_modules/**/node_modules",
+    "lib/**/*"
+  ],
+  "execMap": {
+    "ts": "node --loader ./hmr-ts-custom-path-resolve-loader.js"
+  },
+  "ext": "ts,js,json"
+}

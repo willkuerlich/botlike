@@ -3,6 +3,8 @@ import DiscordJS from 'discord.js';
 
 import { sleep } from 'src/lib/utility.lib';
 
+// 8 | 274878163990 Permission Bitmask
+
 const discordClientOptions: DiscordJS.ClientOptions = {
   intents: [
     'DirectMessages',

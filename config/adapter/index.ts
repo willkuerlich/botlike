@@ -11,5 +11,3 @@ export const registerNetworks: BotNetworkType[] = [
   'discord',
   'telegram' /* , 'whatsapp' */,
 ]; // make type const?
-
-// 8 | 274878163990 Permission Bitmask

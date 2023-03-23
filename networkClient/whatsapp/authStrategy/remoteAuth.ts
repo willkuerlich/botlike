@@ -5,7 +5,7 @@ import { RemoteAuth } from 'whatsapp-web.js';
  *  - create a mongo store wrapper
  * */
 const getRemoteAuth = async () => {
-  const getStore = await (await import('../../../../lib/db/mongoDB.lib')).default;
+  const getStore = await (await import('../../../src/lib/db/mongoDB.lib')).default;
   const store = await getStore();
   if (!store) {
     throw Error('Mongo store init error');

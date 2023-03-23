@@ -12,18 +12,9 @@ import {
   ServiceMap,
 } from 'xstate';
 
-import {
-  DiscordEventBindings,
-  DiscordEventType,
-} from 'src/app/networkClient/discord/types';
-import {
-  TelegramEventBindings,
-  TelegramEventType,
-} from 'src/app/networkClient/telegram/types';
-import {
-  WhatsappEventBindings,
-  WhatsappEventType,
-} from 'src/app/networkClient/whatsapp/types';
+import { DiscordEventBindings, DiscordEventType } from 'networkClient/discord/types';
+import { TelegramEventBindings, TelegramEventType } from 'networkClient/telegram/types';
+import { WhatsappEventBindings, WhatsappEventType } from 'networkClient/whatsapp/types';
 
 import { WhatsappClient } from 'src/types/whatsapp.types';
 import { TelegramClient } from 'src/types/telegram.types';

@@ -21,8 +21,6 @@ import { timelogFormat } from 'src/lib/log.lib';
    *    also absolute imports via "src/..." are enabled by default
    **/
 
-  console.log('hmr-mode');
-
   console.info('.env vars will be loaded if file is present');
   dotenv.config();
 

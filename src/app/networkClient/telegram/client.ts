@@ -21,7 +21,7 @@ const initTelegramClient = async (options: TelegramClient.ConstructorOptions) =>
   try {
     const client = new TelegramClient(env.TELEGRAM_BOT_TOKEN, options);
 
-    if (!client) throw new Error('Whatsapp client could not be loaded');
+    if (!client) throw new Error('Telegram client could not be loaded');
 
     return client;
   } catch (err) {

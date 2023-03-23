@@ -8,7 +8,7 @@ import type { WhatsappClient } from 'src/types/whatsapp.types';
 
 import { whatsappEventBindings } from './eventBindings';
 
-const whatsappNetworkModule = async (): Promise<BotNetworkModule> => {
+const whatsappNetworkModule = async (): Promise<BotNetworkModule<WhatsappClient>> => {
   const client = await loadNetworkClient<WhatsappClient>('whatsapp');
 
   if (!client) throw Error(`Whatsapp client could not be loaded`);

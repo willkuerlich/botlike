@@ -1,5 +1,5 @@
 {
-  "__INFO__": "TO SUPPRESS THE 'ExperimentalWarning: Custom ESM Loaders is an experimental feature.' WARNING => TRY UPDATE NODE TO V19 + use --watch",
+  "__INFO__": "TO SUPPRESS THE 'ExperimentalWarning: Custom ESM Loaders is an experimental feature.' WARNING => EITHER CHANGE MODULE IN TSCONFIG OR TRY UPDATE NODE TO V19 + use --watch",
   "restartable": "rs",
   "ignore": [
     ".changeset/**/*",

@@ -2,11 +2,14 @@ import type { BotNetworkModule, BotNetworkType } from 'src/botlike/core/botlike.
 export const registerNetworkModule = async (networkType: BotNetworkType) => {
   let loadModule: Promise<BotNetworkModule> | null = null;
   switch (networkType) {
-    case 'whatsapp':
-      loadModule = (await import(`./networkClient/whatsapp/module`)).default();
+    case 'discord':
+      loadModule = (await import(`./networkClient/discord/module`)).default();
       break;
     case 'telegram':
       loadModule = (await import(`./networkClient/telegram/module`)).default();
+      break;
+    case 'whatsapp':
+      loadModule = (await import(`./networkClient/whatsapp/module`)).default();
       break;
     default:
       throw new Error(`NetworkModule registration for ${networkType} is not implemented`);

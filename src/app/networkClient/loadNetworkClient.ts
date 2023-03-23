@@ -1,13 +1,21 @@
-import type { WhatsappClient } from 'src/types/whatsapp.types';
+import type { DiscordClient } from 'src/types/discord.types';
 import type { TelegramClient } from 'src/types/telegram.types';
+import type { WhatsappClient } from 'src/types/whatsapp.types';
 import type { BotNetworkType } from 'src/botlike/core/botlike.types';
 
-export const loadNetworkClient = async <T extends TelegramClient | WhatsappClient>(
+export const loadNetworkClient = async <
+  T extends DiscordClient | TelegramClient | WhatsappClient,
+>(
   networkType: BotNetworkType,
 ) => {
   try {
     let client: T | null = null;
     switch (networkType) {
+      case 'discord':
+        client = (await (
+          await import(`src/app/networkClient/discord/client`)
+        ).default()) as T;
+        break;
       case 'telegram':
         client = (await (
           await import(`src/app/networkClient/telegram/client`)

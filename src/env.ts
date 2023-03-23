@@ -20,6 +20,12 @@ const envSchema = z.object({
       'You must have a SYSTEM_CHROME_PATH variable defined in your process.env',
   }),
 
+  /** DISCORD */
+  DISCORD_BOT_TOKEN: z.string({
+    required_error:
+      'You must have a DISCORD_BOT_TOKEN variable defined in your process.env',
+  }),
+
   /** WHATSAPP */
   WA_ACCOUNT_ID: z.string({
     required_error:
@@ -47,37 +53,11 @@ const envSchema = z.object({
   }),
 });
 
-const {
-  BUILD_TARGET,
-  OAI_API_KEY,
-  SYSTEM_CHROME_PATH,
-  WA_ACCOUNT_ID,
-  WA_SESSION_AUTH_STRATEGY,
-  WA_SESSION_LOCAL_PATH,
-  WA_SESSION_REMOTE_MONGODB_URI,
-  SB_API_URL,
-  SB_SERVICE_ROLE_SECRET,
-  IMAGE_API_SERVER_URL,
-  TELEGRAM_BOT_TOKEN,
-} = process.env;
-
 /** Validates the app's environment variables against a predefined schema
  *  - this needs to be called as the first directive after dotenv.config() load
  * */
 export const validate = () => {
-  const env = envSchema.parse({
-    BUILD_TARGET,
-    OAI_API_KEY,
-    SYSTEM_CHROME_PATH,
-    WA_ACCOUNT_ID,
-    WA_SESSION_AUTH_STRATEGY,
-    WA_SESSION_LOCAL_PATH,
-    WA_SESSION_REMOTE_MONGODB_URI,
-    SB_API_URL,
-    SB_SERVICE_ROLE_SECRET,
-    IMAGE_API_SERVER_URL,
-    TELEGRAM_BOT_TOKEN,
-  });
+  const env = envSchema.parse(process.env);
 
   if (!existsSync(env.SYSTEM_CHROME_PATH)) {
     throw new Error('ENV: System chrome path does not exist on this system');

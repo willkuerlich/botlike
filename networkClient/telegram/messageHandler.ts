@@ -23,10 +23,10 @@ export const handleTelegramPrompt = (
 
   if (!message.text) return;
 
-  const msgType: 'chat' | 'image' = message.photo ? 'image' : 'chat'; // X-FIXME: better tg specific differentiation
+  const msgType: 'text' | 'image' = message.photo ? 'image' : 'text'; // X-FIXME: better tg specific differentiation
 
   switch (msgType) {
-    case 'chat':
+    case 'text':
       universalMessageHandler(
         telegramTextRequest(
           botConfig,

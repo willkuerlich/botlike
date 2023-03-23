@@ -1,4 +1,3 @@
-// import TelegramClient from 'node-telegram-bot-api';
 import DiscordJS from 'discord.js';
 import { universalMessageHandler } from 'src/botlike/prompt/universalMessageHandler';
 import { evaluateDiscordUtilityCall } from './utilityCommands';
@@ -11,7 +10,7 @@ import type { BotNetworkModule } from 'src/botlike/core/botlike.types';
 import { discordMessageQueue } from './messageQueue';
 // import { buttonMenuTest } from './menu/menuButtonTest'; // X-TODO: use later
 
-// handleTelegram-Channel/Group/Direct-Prompt
+// handle discord bot interactions vs channel actions
 export const handleDiscordPrompt = (
   message: DiscordJS.Message,
   { client, botConfig }: BotNetworkModule<DiscordJS.Client>,
@@ -26,10 +25,10 @@ export const handleDiscordPrompt = (
   if (message.author.bot) return; // do not reply to messages created by bots
 
   // const msgType: 'chat' | 'image' = message.photo ? 'image' : 'chat'; // X-FIXME: better tg specific differentiation
-  const msgType: 'chat' | 'image' = 'chat'; // X-TODO:
+  const msgType: 'text' | 'image' = 'text'; // X-TODO:
 
   switch (msgType) {
-    case 'chat':
+    case 'text':
       universalMessageHandler(
         discordTextRequest(
           botConfig,

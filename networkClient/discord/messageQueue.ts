@@ -1,4 +1,3 @@
-// import TelegramClient from 'node-telegram-bot-api';
 import DiscordJS from 'discord.js';
 import { sendDiscordImage } from './action/sendDiscordImage';
 import { sendDiscordText } from './action/sendDiscordText';

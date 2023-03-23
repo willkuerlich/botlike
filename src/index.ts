@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { timelogFormat } from './lib/log.lib';
+import { timelogFormat } from 'src/lib/log.lib';
 
 // TODO: implement logger service
 
@@ -21,6 +21,8 @@ import { timelogFormat } from './lib/log.lib';
    *    also absolute imports via "src/..." are enabled by default
    **/
 
+  console.log('Hallo hmr');
+
   console.info('.env vars will be loaded if file is present');
   dotenv.config();
 
@@ -28,3 +30,9 @@ import { timelogFormat } from './lib/log.lib';
 
   await (await import('./app/bootstrap')).default();
 })();
+
+function foo() {
+  console.log('foo');
+}
+
+module.exports = foo();

@@ -1,6 +1,6 @@
 import type { CreateCompletionRequest } from 'openai';
 import type { UniversalActionResponse } from 'src/actions/actionResponsePayload';
-import type { CommandValidationPipelineArgs } from 'src/app/middleware/commandValidationPipeline';
+import type { CommandValidationPipelineArgs } from 'src/middleware/commandValidationPipeline';
 
 import type { BotNetworkType } from 'src/botlike/core/botlike.types';
 import type {

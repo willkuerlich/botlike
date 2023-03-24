@@ -1,4 +1,4 @@
-import { commandValidationPipeline } from 'src/app/middleware/commandValidationPipeline';
+import { commandValidationPipeline } from 'src/middleware/commandValidationPipeline';
 import { getBaseTextCompletion } from 'src/lib/prompts/text';
 import { txt2imgAction } from 'src/actions/image/imageServer/txt2img';
 

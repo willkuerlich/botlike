@@ -3,8 +3,7 @@ import { baseBotConfig as botlikeConfig } from 'config/bot/baseBotConfig';
 import Botlike from 'src/botlike/core';
 
 if (import.meta.vitest) {
-  const { it, describe, test, expect, beforeAll, afterEach, afterAll } = import.meta
-    .vitest;
+  const { it, describe, expect, afterEach } = import.meta.vitest;
 
   let bot: Botlike = null as never;
 

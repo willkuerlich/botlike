@@ -6,7 +6,8 @@ import { registerNetworks } from 'config/adapter'; // X-TODO: cleanup & rename -
 
 export default async () => {
   try {
-    /** validate environment - make sure dotenv.config() has loaded .env file vars first */
+    /** validate environment
+     * - make sure dotenv.config() has loaded .env file vars first */
     validateEnvironmentVars();
 
     /** initialize Botlike Singleton */

@@ -1,4 +1,4 @@
-// import TelegramClient from 'node-telegram-bot-api';
+import DiscordJS from 'discord.js';
 import { formatImageInfo } from 'src/lib/image/formatImageInfo';
 
 import type { ActionResult } from 'src/actions/actionResponsePayload';
@@ -40,5 +40,14 @@ export const sendDiscordImage = async (
   //   sendPhotoMessageOptions,
   //   fileOpts,
   // );
+
+  // const payload: DiscordJS.MessagePayload = {};
+
+  const createOptions: DiscordJS.MessageCreateOptions = {
+    reply: {
+      // messageReference
+    } as DiscordJS.ReplyOptions,
+  };
+  // message.reply()
   return message.channel.send(element.data);
 };

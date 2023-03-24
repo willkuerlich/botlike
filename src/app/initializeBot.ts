@@ -4,12 +4,12 @@ import { loadNetworkModule } from './loadNetworkModule';
 import { timelogFormat } from 'src/lib/log.lib';
 import type { BotNetworkType } from 'src/botlike/core/botlike.types';
 
-export const initializeBot = async (bot: Botlike, registerNetworks: BotNetworkType[]) => {
+export const initializeBot = async (bot: Botlike, networkClients: BotNetworkType[]) => {
   try {
     console.info(`${timelogFormat(new Date())} - Initializing bot`);
 
     /** load modules in parallel */
-    registerNetworks.forEach(async (networkType) => {
+    networkClients.forEach(async (networkType) => {
       const module = await loadNetworkModule(networkType);
 
       if (module) {

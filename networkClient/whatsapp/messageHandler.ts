@@ -12,7 +12,7 @@ export const handleWhatsappPrompt = async (
   message: WhatsappMessage,
   { client, botConfig }: BotNetworkModule<WhatsappClient>,
   args?: {
-    // messageMetaData: TelegramClient.Metadata;
+    // messageMetaData: {}
   },
 ) => {
   const { isUtilityCall } = evaluateWhatsappUtilityCall(message);

@@ -3,14 +3,14 @@ import { registerNetworks } from 'config/adapter';
 // import Botlike from 'src/botlike/core';
 
 if (import.meta.vitest) {
-  const { it, describe, test, expect } = import.meta.vitest;
+  const { it, describe, expect } = import.meta.vitest;
 
   describe('app initialization resources', () => {
-    it('has valid registerNetworks', () => {
+    it('has valid networks config', () => {
       expect(registerNetworks).toBeDefined();
       expect(Array.isArray(registerNetworks)).toBe(true);
       expect(registerNetworks).toEqual(
-        expect.arrayContaining(['discord', 'telegram' /* , 'whatsapp' */]),
+        expect.arrayContaining(['discord', 'telegram', 'whatsapp']),
       );
     });
     // it.each(registerNetworks)('is valid network', (val) => {

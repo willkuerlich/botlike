@@ -1,9 +1,8 @@
 import { WhatsappMessage } from 'src/types/whatsapp.types';
-import { composeCommandRequest } from 'src/app/composeCommandRequest';
 import { messageRequestServices } from 'src/app/messageRequestServices';
 
 import { BotlikeModuleConfig } from 'src/botlike/core/botlike.types';
-import { SubmitMessageHandler } from 'src/commander/commander.types';
+import { CommandRequestData, SubmitMessageHandler } from 'src/commander/commander.types';
 
 interface WhatsappRequestConfig {
   messageType: 'text' | 'image';
@@ -15,33 +14,29 @@ interface WhatsappRequestConfig {
 
 // X-TODO: create base/universal request or split into submodule factories
 
-const composeWhatsappRequest = (cfg: WhatsappRequestConfig) => {
-  const {
-    botlikeConfig,
-    data: images,
+const composeWhatsappRequest = ({
+  botlikeConfig,
+  data: images,
+  messageType,
+  waMessage,
+  submitMessageHandler,
+}: WhatsappRequestConfig): CommandRequestData => ({
+  commandInfo: {
+    messageText: waMessage.body,
     messageType,
-    waMessage,
-    submitMessageHandler,
-  } = cfg;
-  // X-TODO: extract user info from message
-  return composeCommandRequest({
-    commandInfo: {
-      messageText: waMessage.body,
-      messageType,
-      commandTriggerPrefix: botlikeConfig.triggerSequence,
-      data: [...images],
-    },
-    networkInfo: {
-      networkType: 'whatsapp',
-    },
-    userInfo: {
-      userUid: 'wa-dummy-uid', // X-TODO: convert
-      networkUid: 'wa-dummy-network-uid', // X-TODO:
-    },
-    submitMessageHandler,
-    services: messageRequestServices,
-  });
-};
+    commandTriggerPrefix: botlikeConfig.triggerSequence,
+    data: [...images],
+  },
+  networkInfo: {
+    networkType: 'whatsapp',
+  },
+  userInfo: {
+    userUid: 'wa-dummy-uid', // X-TODO: convert
+    networkUid: 'wa-dummy-network-uid', // X-TODO:
+  },
+  submitMessageHandler,
+  services: messageRequestServices,
+});
 
 export const whatsappImageRequest = (
   botlikeConfig: BotlikeModuleConfig,

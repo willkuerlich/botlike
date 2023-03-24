@@ -1,45 +1,43 @@
-import { ProcessArgs } from 'args';
-
-import { botlikeConfig } from 'config/bot/botConfig';
+import { baseBotConfig as botlikeConfig } from 'config/bot/baseBotConfig';
 
 import Botlike from 'src/botlike/core';
 
-const processArgsMock: ProcessArgs = {
-  authStrategy: 'local',
-  // debug: z.boolean().optional(),
-  // introspect: z.boolean().optional(),
-  // mode: z.enum(botTypes).optional(), // Bot mode => Loading of different Bot types
-  // sessionPath: z.string().optional(),
-  // sessionClientId: z.string().optional(),
-};
-
-// in-source test suites
 if (import.meta.vitest) {
-  const { it, expect } = import.meta.vitest;
+  const { it, describe, expect, afterEach } = import.meta.vitest;
 
-  it('Botlike config - present and valid format', () => {
-    expect(botlikeConfig).toBeDefined;
-    expect(botlikeConfig).toBeTypeOf('object');
-    expect(botlikeConfig).ownProperty('name').to.be.not.null.and.to.be.not.undefined;
-    expect(botlikeConfig).ownProperty('name').to.be.not.empty;
-    // new Botlike(botlikeConfig)
+  let bot: Botlike = null as never;
+
+  // reset the singleton bot instance
+  afterEach(() => {
+    if (bot) {
+      bot.dispose();
+    }
+    bot = null as never;
   });
 
-  it('Botlike bot - constructor', () => {
-    const bot = new Botlike(botlikeConfig, processArgsMock);
-    expect(bot).toBeDefined;
-    expect(bot).toBeTypeOf('object');
-    expect(bot).to.haveOwnProperty('networkModules');
-    // expect(bot).ownProperty('instance').to.be.null;
-  });
+  describe('Botlike class', () => {
+    it('has a valid config', () => {
+      expect(botlikeConfig).toBeDefined();
+      expect(botlikeConfig).toBeTypeOf('object');
+      expect(botlikeConfig).ownProperty('name').to.be.not.null.and.to.be.not.undefined;
+      expect(botlikeConfig).ownProperty('name').to.be.not.empty;
+    });
 
-  it('Botlike bot - is singleton', () => {
-    const bot = new Botlike(botlikeConfig, processArgsMock);
-    expect(bot).toBeDefined;
-    expect(bot).toBeTypeOf('object');
-    expect(bot).toEqual(Botlike.instance);
+    it('has working constructor', () => {
+      bot = new Botlike();
+      expect(bot).toBeDefined();
+      expect(bot).toBeTypeOf('object');
+      expect(bot).to.haveOwnProperty('networkModules');
+    });
 
-    const bot2 = new Botlike(botlikeConfig, processArgsMock);
-    expect(bot).toEqual(bot2);
+    it('is a singleton', () => {
+      bot = new Botlike();
+      expect(bot).toBeDefined;
+      expect(bot).toBeTypeOf('object');
+      expect(bot).toEqual(Botlike.instance);
+
+      const bot2 = new Botlike();
+      expect(bot).toEqual(bot2);
+    });
   });
 }

@@ -1,15 +1,16 @@
 import { service } from 'src/botlike/bot/default/state/PromptMachine';
 
-import { baseBotConfig } from '../../baseBotConfig';
-import { loadNetworkClient } from '../loadNetworkClient';
+import { baseBotConfig } from 'config/bot/baseBotConfig';
 
 import type { BotNetworkModule } from 'src/botlike/core/botlike.types';
 import type { WhatsappClient } from 'src/types/whatsapp.types';
 
 import { whatsappEventBindings } from './eventBindings';
 
-const whatsappNetworkModule = async (): Promise<BotNetworkModule> => {
-  const client = await loadNetworkClient<WhatsappClient>('whatsapp');
+const whatsappNetworkModule = async (): Promise<BotNetworkModule<WhatsappClient>> => {
+  const client = (await (
+    await import(`networkClient/whatsapp/client`)
+  ).default()) as WhatsappClient;
 
   if (!client) throw Error(`Whatsapp client could not be loaded`);
 

@@ -1,25 +1,28 @@
-// import processArgs, { ProcessArgs } from 'args';
 // import { initializeBot } from './initializeBot';
-
-// import { botlikeConfig } from 'config/bot/botConfig';
-
+import { registerNetworks } from 'config/adapter';
 // import Botlike from 'src/botlike/core';
 
-// const processArgsMock: ProcessArgs = {
-//   authStrategy: 'local',
-//   // debug: z.boolean().optional(),
-//   // introspect: z.boolean().optional(),
-//   // mode: z.enum(botTypes).optional(), // Bot mode => Loading of different Bot types
-//   // sessionPath: z.string().optional(),
-//   // sessionClientId: z.string().optional(),
-// };
-
-// in-source test suites
 if (import.meta.vitest) {
-  const { it, describe, test, expect } = import.meta.vitest;
+  const { it, describe, expect } = import.meta.vitest;
 
-  it('initialize bot success', async () => {
-    // expect(await initializeBot())
-    expect('TODO').toStrictEqual('TASK-COMPLETED');
+  describe('app initialization resources', () => {
+    it('has valid networks config', () => {
+      expect(registerNetworks).toBeDefined();
+      expect(Array.isArray(registerNetworks)).toBe(true);
+      expect(registerNetworks).toEqual(
+        expect.arrayContaining(['discord', 'telegram', 'whatsapp']),
+      );
+    });
+    // it.each(registerNetworks)('is valid network', (val) => {
+    //   expect(val).toBeTypeOf('string');
+    //   expect(val).includes.any.keys(['discord', 'telegram', 'whatsapp']);
+    // });
   });
+
+  // describe('app initialization', () => {
+  //   it('loads network modules', async () => {
+  //     // const initBot = await initializeBot(new Botlike(), registerNetworks);
+  //     // pass Botlike mock and expect to have loaded modules
+  //   });
+  // });
 }

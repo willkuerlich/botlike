@@ -68,10 +68,10 @@ export class Botlike
   taskQueue: BotTask[] = [];
   // actionDictionary: Record<string, string> = {};
 
-  constructor(botConfig: BotlikeInitConfig, processArgs: ProcessArgs) {
-    const { /* adapter, */ debug, mode = 'default' } = processArgs;
+  constructor(/* processArgs: ProcessArgs */) {
+    // const { /* adapter, */ debug, mode = 'default' } = processArgs;
 
-    if (debug) console.log(`Botlike Bot is starting in mode "${mode}"...`);
+    // if (debug) console.log(`Botlike Bot is starting in mode "${mode}"...`);
 
     if (Botlike.instance) {
       console.log('Botlike.instance already setup: ', Botlike.instance);
@@ -84,6 +84,11 @@ export class Botlike
     }
     // service.start();
   }
+
+  // helper for testing
+  public dispose = () => {
+    Botlike.instance = null as never;
+  };
 
   public onDisconnect = (type: BotNetworkType) => console.log(`${type} disconnected`);
 

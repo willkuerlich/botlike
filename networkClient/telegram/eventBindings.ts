@@ -1,5 +1,5 @@
 import TelegramClient from 'node-telegram-bot-api';
-import { BotlikeModuleConfig, BotNetworkModule } from 'src/botlike/core/botlike.types';
+import { BotNetworkModule } from 'src/botlike/core/botlike.types';
 import { handleTelegramPrompt } from './messageHandler';
 
 import type { TelegramEventBindings } from './types';

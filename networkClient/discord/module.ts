@@ -1,6 +1,6 @@
 import { service } from 'src/botlike/bot/default/state/PromptMachine';
 
-import { baseBotConfig } from '../../src/app/baseBotConfig';
+import { baseBotConfig } from 'config/bot/baseBotConfig';
 
 import type { BotNetworkModule } from 'src/botlike/core/botlike.types';
 import type { DiscordClient } from 'src/types/discord.types';

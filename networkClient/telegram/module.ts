@@ -1,6 +1,6 @@
 import { service } from 'src/botlike/bot/default/state/PromptMachine';
 
-import { baseBotConfig } from '../../src/app/baseBotConfig';
+import { baseBotConfig } from 'config/bot/baseBotConfig';
 
 import { telegramEventBindings } from './eventBindings';
 

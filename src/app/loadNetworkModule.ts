@@ -1,5 +1,5 @@
 import type { BotNetworkModule, BotNetworkType } from 'src/botlike/core/botlike.types';
-export const registerNetworkModule = async (networkType: BotNetworkType) => {
+export const loadNetworkModule = async (networkType: BotNetworkType) => {
   let loadModule: Promise<BotNetworkModule> | null = null;
   switch (networkType) {
     case 'discord':

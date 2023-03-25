@@ -4,20 +4,30 @@ import { txt2imgAction } from 'src/actions/image/imageServer/txt2img';
 
 import type { MessageRequestServices } from 'src/commander/commander.types';
 import { img2imgAction } from 'src/actions/image/imageServer/img2img';
+import { commandLogger } from 'src/services/logger/commandLogger';
 
 // import { formatImageInfo } from 'src/lib/image/formatImageInfo';
 
-export const messageRequestServices: MessageRequestServices = {
-  actionServices: {
-    text: {
-      completion: getBaseTextCompletion,
+/**
+ * Replace with ServiceCenter
+ * @returns
+ */
+export const messageRequestServices = (): MessageRequestServices => {
+  return {
+    actionServices: {
+      text: {
+        completion: getBaseTextCompletion,
+      },
+      image: {
+        text2Image: txt2imgAction,
+        image2Image: img2imgAction,
+      },
     },
-    image: {
-      text2Image: txt2imgAction,
-      image2Image: img2imgAction,
+    serverServices: {
+      commandLogger,
     },
-  },
-  utility: {
-    commandValidationService: commandValidationPipeline,
-  },
+    utility: {
+      commandValidationService: commandValidationPipeline,
+    },
+  };
 };

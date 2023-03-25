@@ -25,6 +25,9 @@ export interface MessageRequestServices {
     //  validateMessageAction
   };
   // conversionServices: {};
+  serverServices: {
+    commandLogger: (command: CommandRequestData) => Promise<boolean>;
+  };
   actionServices: {
     text: {
       completion: (msg: string, options?: CreateCompletionRequest) => Promise<string>;

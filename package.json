@@ -14,6 +14,11 @@
     "npm": ">= 8.19.3"
   },
   "scripts": {
+    "--->  SB      ---": "---------------------------------------------------------",
+    "snaplet": "snaplet",
+    "snaplet:setup": "snaplet setup",
+    "snaplet:restore": "snaplet snapshot restore",
+    "--->  VITE FE ---": "---------------------------------------------------------",
     "start-vite": "vite",
     "build-vite": "vite build",
     "preview-vite": "vite preview",
@@ -51,6 +56,7 @@
   ],
   "dependencies": {
     "@commander-js/extra-typings": "~10.0.1",
+    "@supabase/supabase-js": "~2.12.1",
     "axios": "~1.2.2",
     "boxen": "~7.0.1",
     "commander": "~10.0.0",
@@ -75,6 +81,7 @@
     "eslint": "~8.34.0",
     "nodemon": "~2.0.22",
     "rimraf": "~4.1.1",
+    "snaplet": "~0.36.17",
     "ts-node": "~10.9.1",
     "tsconfig-paths": "~4.1.2",
     "tsup": "~6.5.0",

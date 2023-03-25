@@ -38,7 +38,7 @@ const composeTelegramRequest = ({
     networkUid: 'tg-dummy-network-uid', // X-TODO:
   },
   submitMessageHandler,
-  services: messageRequestServices,
+  services: messageRequestServices(),
 });
 
 export const telegramImageRequest = (

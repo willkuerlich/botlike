@@ -1,8 +1,9 @@
-import type { ProcessArgs } from 'args';
+// import type { ProcessArgs } from 'args';
+import env from 'env';
 
 import {
   BotlikeConfig,
-  BotlikeInitConfig,
+  // BotlikeInitConfig,
   // BotNetworkEventHandler,
   // BotNetworkEventName,
   BotNetworkModule,
@@ -17,14 +18,12 @@ import {
 // import { service as testService } from 'src/botlike/bot/test/state/machine';
 import { service as promptService } from 'src/botlike/bot/default/state/PromptMachine';
 // import { testBot } from 'src/botlike/bot/test';
-// import { WhatsappEventBindings, WhatsappEventType } from 'src/app/adapter/whatsapp/types';
 // import { BaseEventBindings } from 'src/types/event.types';
-// import { Client as WhatsappClient, Message as WhatsappMessage } from 'whatsapp-web.js';
-// import TelegramClient from 'node-telegram-bot-api';
 // import { Interpreter, ServiceConfig } from 'xstate';
 
 import { registerNetworkEventHandlers } from './registerNetworkEventHandlers';
 import { timelogFormat } from 'src/lib/log.lib';
+import getSupabaseClient, { SupabaseClient } from 'modules/supabase/supabaseClient';
 
 const isTranslationOn = false; // X-TODO: .env / args
 
@@ -38,6 +37,9 @@ export class Botlike
     >
 {
   static instance: Botlike = null as never;
+  // X-TODO: replace with generic module system
+  supabaseClient: SupabaseClient | null = null;
+  // systemModules: BotSystemModule[] = [];
 
   networkModules: BotNetworkModule[] = [];
   // call this inside of constructor?
@@ -77,7 +79,9 @@ export class Botlike
       console.log('Botlike.instance already setup: ', Botlike.instance);
       return Botlike.instance;
     } else {
-      // this.instance = this;
+      // X-TODO: replace with system module loader mechanism
+      if (env.USE_MODULE_SUPABASE) this.supabaseClient = getSupabaseClient();
+
       Botlike.instance = this;
 
       // this.name = args?.name || this.name || 'John Doe Bot';

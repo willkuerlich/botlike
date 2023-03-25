@@ -35,7 +35,7 @@ const composeWhatsappRequest = ({
     networkUid: 'wa-dummy-network-uid', // X-TODO:
   },
   submitMessageHandler,
-  services: messageRequestServices,
+  services: messageRequestServices(),
 });
 
 export const whatsappImageRequest = (

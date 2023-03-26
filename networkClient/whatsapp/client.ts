@@ -4,6 +4,8 @@ import { Client as WhatsappClient, AuthStrategy } from 'whatsapp-web.js';
 
 import { AuthenticationType } from 'config/adapter/whatsapp/auth';
 
+import { displayQRTerminal } from 'src/lib/qr.lib';
+
 // import db from 'src/lib/indexedDB.lib';
 
 const getAuthStrategy = async (type: AuthenticationType) => {
@@ -37,7 +39,16 @@ const initWhatsappClient = async (authStrategy: AuthStrategy) => {
     bypassCSP: true,
     authStrategy,
   } as any); // for bypass test
+
+  // X-FIXME: create multiple phases of initialization
+
+  client.on('qr', displayQRTerminal);
+  client.on('ready', () => {
+    console.log('Whatsapp network client is ready');
+    //  Botlike.instance.start('whatsapp');
+  });
   await client.initialize();
+
   return client;
 };
 
@@ -49,7 +60,7 @@ const createClient = async () => {
 
     if (!strategy) throw new Error('No whatsapp auth strategy');
 
-    const client = initWhatsappClient(strategy);
+    const client = await initWhatsappClient(strategy);
 
     if (!client) throw new Error('Whatsapp client could not be loaded');
 

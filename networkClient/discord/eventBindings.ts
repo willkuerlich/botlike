@@ -8,7 +8,7 @@ export const discordEventBindings = (
   module: BotNetworkModule<DiscordJS.Client>,
 ): Partial<DiscordEventBindings> => ({
   // ready: (client: DiscordJS.Client) => console.log('Discord ready, client: ', client),
-  ready: (client: DiscordJS.Client) => console.log('Discord ready'),
+  ready: (client: DiscordJS.Client) => console.log('Discord network client is ready'),
   messageCreate: (msg: DiscordJS.Message) => {
     console.log('message create');
     handleDiscordPrompt(msg, module);

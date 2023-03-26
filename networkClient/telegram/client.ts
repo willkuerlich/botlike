@@ -35,7 +35,8 @@ const createClient = async () => {
     const client = await initTelegramClient(tgInitOptions);
     await sleep(500);
 
-    if (!client) throw new Error('Whatsapp client could not be loaded');
+    if (!client) throw new Error('Telegram client could not be loaded');
+    console.log('Telegram network client is ready');
 
     return client;
   } catch (err) {

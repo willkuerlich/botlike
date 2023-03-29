@@ -33,7 +33,7 @@
     "--->  TESTS     ---": "---------------------------------------------------------",
     "coverage": "vitest run --coverage",
     "test": "vitest",
-    "test:on-commit": "vitest --watch=false",
+    "test:on-commit": "npm run lint && test --watch=false",
     "test:web-client": "vitest --environment jsdom",
     "--->  UTILS     ---": "---------------------------------------------------------",
     "cleanup": "rimraf dist",

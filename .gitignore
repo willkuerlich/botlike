@@ -3,6 +3,7 @@ dist
 
 # env files to keep out of repo
 .env
+.env.development
 .env.server
 
 # the production server's whatsapp session is saved here
@@ -15,4 +16,6 @@ dist
 
 coverage/**/*
 
+# supabase
 .snaplet
+supabase/config.toml

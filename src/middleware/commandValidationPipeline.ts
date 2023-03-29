@@ -6,13 +6,16 @@ type CommandValidationContext = {
   onError: (errMsg: string) => void;
 };
 
-const validationDebugMiddleware: Middleware<CommandValidationContext> = (
+const validationDebugMiddleware: Middleware<CommandValidationContext> = async (
   { onError, commandRequestData },
   next,
 ) => {
   console.log('==> UserId: ', commandRequestData?.userInfo?.userUid);
   console.log('validateCtxMiddleware running commandRequestData: ', commandRequestData);
-
+  const logRes = await commandRequestData.services.serverServices.commandLogger(
+    commandRequestData,
+  );
+  if (!logRes) console.warn('CommandLogger service could not log message');
   next();
 };
 

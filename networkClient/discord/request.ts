@@ -38,7 +38,7 @@ const composeDiscordRequest = ({
     networkUid: 'dc-dummy-network-uid', // X-TODO:
   },
   submitMessageHandler,
-  services: messageRequestServices,
+  services: messageRequestServices(),
 });
 
 export const discordImageRequest = (

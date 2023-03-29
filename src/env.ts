@@ -1,5 +1,6 @@
 import { existsSync } from 'fs';
 import z from 'zod';
+import { zodTransformStringToBoolean } from './lib/zod/transformStringToBoolean';
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //// !! DO NOT DELETE OR MOVE THIS FILE WITHOUT UPDATING "paths" IN tsconfig.json !! ////
@@ -19,11 +20,18 @@ const envSchema = z.object({
     required_error:
       'You must have a SYSTEM_CHROME_PATH variable defined in your process.env',
   }),
+  IMAGE_API_SERVER_URL: z.string().optional(),
 
   /** DISCORD */
   DISCORD_BOT_TOKEN: z.string({
     required_error:
       'You must have a DISCORD_BOT_TOKEN variable defined in your process.env',
+  }),
+
+  /** TELEGRAM */
+  TELEGRAM_BOT_TOKEN: z.string({
+    required_error:
+      'You must have a TELEGRAM_BOT_TOKEN variable defined in your process.env (Telegram bot token you receive from @BotFather)',
   }),
 
   /** WHATSAPP */
@@ -40,17 +48,14 @@ const envSchema = z.object({
   WA_SESSION_REMOTE_MONGODB_URI: z.string().optional(),
 
   /** SUPABASE */
+  USE_MODULE_SUPABASE: z
+    .string({
+      required_error:
+        'You must have a USE_MODULE_SUPABASE variable set in your process.env',
+    })
+    .transform(zodTransformStringToBoolean),
   SB_API_URL: z.string().optional(),
   SB_SERVICE_ROLE_SECRET: z.string().optional(),
-
-  /** IMAGE API SERVER */
-  IMAGE_API_SERVER_URL: z.string().optional(),
-
-  /** TELEGRAM */
-  TELEGRAM_BOT_TOKEN: z.string({
-    required_error:
-      'You must have a TELEGRAM_BOT_TOKEN variable defined in your process.env (Telegram bot token you receive from @BotFather)',
-  }),
 });
 
 /** Validates the app's environment variables against a predefined schema

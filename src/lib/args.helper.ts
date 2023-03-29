@@ -6,16 +6,19 @@ import { ProcessArgs } from 'args';
 import { authenticationTypes } from 'config/adapter/whatsapp/auth';
 import { botTypes } from 'config/bot/botTypes';
 
+// X-TODO: handle WA's authStrategy in a generic way
+
 export const processArgsSchema = z.object({
   // adapter: z.enum(adapterTypes, {
   //   required_error: `You need to append an adapter (-a | --adapter) as a runtime argument,
   //   to your "start" script (package.json) e.g.: "node dist --adapter whatsapp"`,
   // }),
   /* authStrategy - might be necessary to adjust for other adapters */
-  authStrategy: z.enum(authenticationTypes, {
-    required_error: `You need to append an authStrategy (-as | --auth-strategy) as a runtime argument,
-    to your "start" script (package.json) e.g.: "node dist --adapter whatsapp"`,
-  }),
+  // authStrategy: z.enum(authenticationTypes, {
+  //   required_error: `You need to append an authStrategy (-as | --auth-strategy) as a runtime argument,
+  //   to your "start" script (package.json) e.g.: "node dist --adapter whatsapp"`,
+  // }),
+  authStrategy: z.enum(authenticationTypes).optional(),
   debug: z.boolean().optional(),
   introspect: z.boolean().optional(),
   mode: z.enum(botTypes).optional(), // Bot mode => Loading of different Bot types
@@ -39,7 +42,7 @@ export const processArgsParser = () =>
     //   '-a, --adapter <val>',
     //   `network adapter, valid values: [ ${adapterTypes.map((type) => `"${type}" `)}]`,
     // )
-    .requiredOption(
+    .option(
       '-as, --auth-strategy <val>',
       `whatsapp auth strategy, valid values: [ ${authenticationTypes.map(
         (type) => `"${type}" `,

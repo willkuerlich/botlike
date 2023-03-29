@@ -7,6 +7,7 @@
     "openai",
     "pnpm",
     "qrcode",
+    "snaplet",
     "SUPABASE",
     "tsup",
     "wwebjs"

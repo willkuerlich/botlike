@@ -20,6 +20,14 @@ Telegram uses a token which you can set in the .env file.
 
 ## Usage
 
+```bash
+  npm run build
+
+  npm run start // (default mode)
+  // or
+  npm run dev // (development mode)
+```
+
 ## API
 
 ## Road map
@@ -34,9 +42,11 @@ Telegram uses a token which you can set in the .env file.
 - [X] Move WA module + Mongo into own package
 - [X] Setup Base Adapter for Telegram
 - [X] Integrate TG module
-- [ ] Integrate Discord module
+- [X] Integrate Discord module
+- [ ] Add image output for Discord
 - [X] Add development mode
 - [X] Add test suite (vitest)
+- [X] Add development mode (restart on code change)
 - [ ] Write basic tests
 - [ ] Write docs
 - [ ] List licenses of sub packages

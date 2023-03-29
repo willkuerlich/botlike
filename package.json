@@ -51,18 +51,21 @@
     "start:inspect": "set NODE_OPTIONS=\"--inspect-brk=5500\" && npm run start",
     "dev:local": "node dist -c dev-client -as local -s ./.wwebjs_auth -i",
     "dev:remote": "node dist -c dev-client -as remote -i",
-    "connection-test:local": "node connection-test-local",
-    "connection-test:server": "node connection-test-server",
     "prepare": "husky install"
   },
   "keywords": [
     "willkuerlich",
     "openai",
     "puppeteer",
-    "qrcode-terminal",
     "tsup",
     "typescript",
-    "whatsapp"
+    "whatsapp",
+    "telegram",
+    "discord",
+    "nodemon",
+    "vitest",
+    "supabase",
+    "snaplet"
   ],
   "dependencies": {
     "@commander-js/extra-typings": "~10.0.1",
